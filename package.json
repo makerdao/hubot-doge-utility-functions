@@ -1,0 +1,22 @@
+{
+  "name": "hubot-doge-utility-functions",
+  "version": "1.0.0",
+  "description": "Multi-purpose hubot utility functions needed as a dependency in the doge-bot (a robust hubot housing several programs)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ith-harvey/hubot-doge-utility-functions.git"
+  },
+  "keywords": [
+    "hubot"
+  ],
+  "author": "Ian Harvey (ith-harvey@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ith-harvey/hubot-doge-utility-functions/issues"
+  },
+  "homepage": "https://github.com/ith-harvey/hubot-doge-utility-functions#readme"
+}
