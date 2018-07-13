@@ -30,8 +30,6 @@ const getAuthToken = () => {
 
 const getPrivateRooms = (data) => {
   const {authToken: token, userId: botId } = data
-  console.log('token:', token);
-  console.log('userId:', botId);
   const options = {
     method: 'GET',
     url: `${process.env.ROCKETCHAT_URL}/api/v1/groups.listAll`,
