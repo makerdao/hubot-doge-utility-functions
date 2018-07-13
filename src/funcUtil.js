@@ -2,8 +2,8 @@
 // Requirements for certain util functions
 const {exec} = require('child_process')
 const fs = require('fs')
+//
 
-// composes our functions together to create new functions
 const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)))
 
 const regTest = regexString => testText => regexString.test(testText)
