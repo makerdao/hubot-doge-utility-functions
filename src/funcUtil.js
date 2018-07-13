@@ -67,6 +67,8 @@ const readFilePromise = credentialPath => new Promise( (resolve, reject) => {
   })
 });
 
+const trim = str => str.trim()
+
 module.exports = {
   boolValTranslator,
   indexOf,
@@ -88,5 +90,6 @@ module.exports = {
   execPromise,
   readFilePromise,
   defaultJoin,
-  getTodaysDateInUTC
+  getTodaysDateInUTC,
+  trim
 }
