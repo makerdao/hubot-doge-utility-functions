@@ -32,7 +32,7 @@ const getPrivateRooms = (data) => {
   const {authToken: token, userId: botId } = data
   const options = {
     method: 'GET',
-    url: `${process.env.ROCKETCHAT_URL}/api/v1/groups.listAll`,
+    url: `${process.env.ROCKETCHAT_URL}/api/v1/groups.list`,
     headers:{
       'X-Auth-Token': token,
       'X-User-Id': botId,
