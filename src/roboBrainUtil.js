@@ -28,6 +28,23 @@ const getAuthToken = () => {
   return rp(options)
 }
 
+const getPrivateRooms = (data) => {
+  const {authToken: token, userId: botId } = data
+  console.log('token:', token);
+  console.log('userId:', botId);
+  const options = {
+    method: 'GET',
+    url: `${process.env.ROCKETCHAT_URL}/api/v1/groups.listAll`,
+    headers:{
+      'X-Auth-Token': token,
+      'X-User-Id': botId,
+    },
+    json: true
+  }
+  return rp(options)
+}
+
+
 const downloadInvoice = (downloadUrl, data) => {
   const {authToken: token, userId: botId } = data
   const options = {
@@ -60,6 +77,7 @@ const sendUserMessage = (message, robot, userName) => {
 module.exports = {
   newUserCheckAndCreate,
   getAuthToken,
+  getPrivateRooms,
   sendUserMessage,
   downloadInvoice
 }
