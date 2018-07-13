@@ -66,6 +66,31 @@ const downloadInvoice = (downloadUrl, data) => {
   })
 }
 
+/**
+ * @function addUserToGroup
+ * User (in this case bot) MUST be in the channel that they invite user's to
+ * @param {Object} data The authorization client credentials.
+ * @param {Object} msg hubot's msg object
+ * @param {String} groupId hubot's msg object
+ */
+const addUserToGroup = (data, msg, groupId) => {
+  const {authToken: token, userId: botId } = data
+  const options = {
+    method: 'POST',
+    url: `${process.env.ROCKETCHAT_URL}/api/v1/groups.invite`,
+    headers:{
+      'X-Auth-Token': token,
+      'X-User-Id': botId,
+    },
+    body: {
+      roomId: groupId,
+      userId: msg.message.user.id
+    },
+    json: true
+  }
+  return rp(options)
+}
+
 const sendUserMessage = (message, robot, userName) => {
   robot.adapter.chatdriver.getDirectMessageRoomId(userName).then(response => {
     robot.adapter.chatdriver.sendMessageByRoomId(message, response.rid)
@@ -75,6 +100,7 @@ const sendUserMessage = (message, robot, userName) => {
 module.exports = {
   newUserCheckAndCreate,
   getAuthToken,
+  addUserToGroup,
   getPrivateRooms,
   sendUserMessage,
   downloadInvoice

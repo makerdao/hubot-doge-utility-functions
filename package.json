@@ -1,6 +1,6 @@
 {
   "name": "hubot-doge-utility-functions",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Multi-purpose hubot utility functions needed as a dependency in the doge-bot (a robust hubot housing several programs)",
   "main": "index.js",
   "scripts": {
