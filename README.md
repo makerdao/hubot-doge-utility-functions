@@ -6,8 +6,6 @@ hubot-doge-utility-functions is a multi-purpose hubot utility package needed as 
 
 `npm install --save hubot-doge-utility-functions`
 
-Add it to your 'hubot-scripts.json' -> `[hubot-doge-utility-functions]`
-
 In order to access the utility functions include them at the top of your JS file:
 
 ```
@@ -21,7 +19,7 @@ module.exports = (robot) => {
   // hubot robot respond method
   robot.respond(/hello world/i, (msg) => {
 
-    FU.newUserCheckAndCreate(robot, msg.message.user.id)
+    RBU.newUserCheckAndCreate(robot, msg.message.user.id)
 
 
   })
