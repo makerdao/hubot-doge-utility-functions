@@ -1,9 +1,8 @@
-// Robo Brain Util
-const RBU = require('./roboBrainUtil.js')
+const path = require('path');
 
-// Function Util
-const FU = require('./funcUtil.js')
-
-module.exports = {
-  RBU, FU
-}
+module.exports = function (robot) {
+  const srcPath = path.resolve(__dirname, 'src');
+  return [
+    robot.loadFile(srcPath, 'index.js')
+  ];
+};

@@ -13,10 +13,14 @@
   "keywords": [
     "hubot"
   ],
-  "author": "Ian Harvey (ith-harvey@gmail.com)",
+  "author": "Ian Harvey (ith-harvey)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ith-harvey/hubot-doge-utility-functions/issues"
   },
-  "homepage": "https://github.com/ith-harvey/hubot-doge-utility-functions#readme"
+  "homepage": "https://github.com/ith-harvey/hubot-doge-utility-functions#readme",
+  "dependencies": {
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
+  }
 }
