@@ -3,9 +3,6 @@ const request = require('request')
 const fs = require('fs')
 const Duplex = require('stream').Duplex;
 
-var streamBuffers = require('stream-buffers');
-var stream = require('stream');
-
 const newUserCheckAndCreate = (robot, userId) => {
   if (robot.brain.get(userId))
     return
