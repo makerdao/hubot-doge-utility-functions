@@ -14,6 +14,8 @@ const indexOf = item => array => array.indexOf(item)
 
 const split = sep => str => str.split(sep);
 
+const replace = (whatToReplace, substitute) => str => str.replace(whatToReplace, substitute)
+
 const slice = (start, end) => str => str.slice(start, end);
 
 const spaceSplit = split(' ')
@@ -69,6 +71,7 @@ module.exports = {
   boolValTranslator,
   indexOf,
   remove,
+  replace,
   compose,
   split,
   slice,
