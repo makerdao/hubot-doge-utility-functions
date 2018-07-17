@@ -6,22 +6,29 @@ const fs = require('fs')
 
 const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)))
 
+// regTest :: String -> String -> Boolean
 const regTest = regexString => testText => regexString.test(testText)
 
+// remove :: String -> [String] -> [String]
 const remove = item => array => array.slice((array.indexOf(item) + 1), array.length)
 
+// indexOf :: a -> a -> Number
 const indexOf = item => array => array.indexOf(item)
 
+// split :: String -> String -> [String]
 const split = sep => str => str.split(sep);
 
+// replace :: (String, String) -> String -> String
 const replace = (whatToReplace, substitute) => str => str.replace(whatToReplace, substitute)
 
+// slice :: (Number, Number) -> String -> String
 const slice = (start, end) => str => str.slice(start, end);
 
 const spaceSplit = split(' ')
 
 const newLineSplit = split('\n')
 
+// join :: String -> [a] -> String
 const join = sep => array => array.join(sep)
 
 const spaceJoin = join(' ')
@@ -30,29 +37,38 @@ const defaultJoin = join('')
 
 const purify = x => JSON.parse(JSON.stringify(x))
 
+// push :: (a, [a/b]) -> [a/b]
 const push = (x, array) => array.push(x)
 
+// prop :: (String -> {a/b}) -> a/b
 const prop = property => object => object[property]
 
-const equalModifier = modifier => prop => prop = modifier
+// equalModifier :: (a/b -> a/b) -> a/b
+const equalModifier = modifier => objProp => objProp = modifier
 
+// modObjKickBack :: ((a/b, a/b) -> {a/b}) -> {a/b}
 const modObjKickBack = (prop, value) => object => {
   let newObj = purify(object)
   newObj[prop] = value
   return newObj
 }
 
+// boolValTranslator :: Condition -> Boolean
 const boolValTranslator = val => val ? true : false
 
+// getTodaysDateInUTC :: () -> String
 const getTodaysDateInUTC = () => {
   const tD = new Date()
   return `${tD.getUTCFullYear()}/${("0" + (tD.getUTCMonth() + 1)).slice(-2)}/${("0" + tD.getUTCDate()).slice(-2)}`
 }
 
+// getTodaysDateInUTC :: () -> String
 const checkIfDMOrPublic = (msg) => msg.split(' ')[1] ? msg.split(' ')[1] : msg.split(' ')[0] // if in DM the mssge has an added 'doge' string -> this gets rid of it
 
+// returnTrue :: () -> Boolean
 const returnTrue = () => true
 
+// execPromise :: (fn -> Promise) -> String
 const execPromise = cmd => new Promise( (resolve, reject) => {
   exec(cmd, function(err, stdout, stderr) {
     if (err) return reject(err)
@@ -60,6 +76,7 @@ const execPromise = cmd => new Promise( (resolve, reject) => {
   });
 });
 
+// readFilePromise :: (fn -> Promise) -> String
 const readFilePromise = credentialPath => new Promise( (resolve, reject) => {
   fs.readFile(credentialPath, (err, content) => {
     if (err) return reject(err)
@@ -67,6 +84,7 @@ const readFilePromise = credentialPath => new Promise( (resolve, reject) => {
   })
 });
 
+// trim :: String -> String
 const trim = str => str.trim()
 
 module.exports = {

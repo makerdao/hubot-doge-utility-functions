@@ -17,7 +17,7 @@ const getAuthToken = () => {
     method: 'POST',
     uri: `${process.env.ROCKETCHAT_URL}/api/v1/login`,
     headers: {
-        'User-Agent': 'Request-Promise'
+      'User-Agent': 'Request-Promise'
     },
     body: {
       username: process.env.ROCKETCHAT_USER,
