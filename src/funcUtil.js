@@ -4,6 +4,7 @@ const {exec} = require('child_process')
 const fs = require('fs')
 //
 
+// compose :: [fn] -> ((fn, fn) -> [fn] -> fn) -> fn
 const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)))
 
 // regTest :: String -> String -> Boolean
