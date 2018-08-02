@@ -13,7 +13,7 @@ const regTest = regexString => testText => regexString.test(testText)
 // remove :: String -> [String] -> [String]
 const remove = item => array => array.slice((array.indexOf(item) + 1), array.length)
 
-// indexOf :: a -> a -> Number
+// indexOf :: a -> [a] -> Number
 const indexOf = item => array => array.indexOf(item)
 
 // split :: String -> String -> [String]
@@ -51,6 +51,13 @@ const equalModifier = modifier => objProp => objProp = modifier
 const modObjKickBack = (prop, value) => object => {
   let newObj = purify(object)
   newObj[prop] = value
+  return newObj
+}
+
+const modObjArrPushKickBack = (prop, value) => object => {
+  let newObj = purify(object)
+  if (!newObj[prop]) newObj[prop] = []
+  newObj[prop].push(value)
   return newObj
 }
 
@@ -99,6 +106,7 @@ module.exports = {
   regTest,
   purify,
   modObjKickBack,
+  modObjArrPushKickBack,
   prop,
   equalModifier,
   spaceSplit,
