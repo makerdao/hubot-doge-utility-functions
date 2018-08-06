@@ -118,5 +118,6 @@ module.exports = {
   readFilePromise,
   defaultJoin,
   getTodaysDateInUTC,
-  trim
+  trim,
+  join
 }
