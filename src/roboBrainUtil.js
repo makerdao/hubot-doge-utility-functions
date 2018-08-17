@@ -91,10 +91,8 @@ const addUserToGroup = (data, msg, groupId) => {
   return rp(options)
 }
 
-const sendUserMessage = (message, robot, userName) => {
-  robot.adapter.chatdriver.getDirectMessageRoomId(userName).then(response => {
-    robot.adapter.chatdriver.sendMessageByRoomId(message, response.rid)
-  })
+const sendUserMessage = (message, robot, roomID) => {
+  robot.messageRoom(roomID, message)
 }
 
 module.exports = {
