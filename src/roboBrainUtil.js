@@ -92,7 +92,7 @@ const addUserToGroup = (data, msg, groupId) => {
 }
 
 const sendUserMessage = (message, robot, roomID) => {
-  robot.messageRoom(roomID, message)
+  robot.send(roomID, message)
 }
 
 module.exports = {
