@@ -2,7 +2,29 @@
 // Requirements for certain util functions
 const {exec} = require('child_process')
 const fs = require('fs')
-//
+
+// basic Maybe functor
+class Maybe {
+  static of(x) {
+    return new Maybe(x)
+  }
+
+  isNothing() {
+    return this.$value === null || this.$value === undefined
+  }
+
+  constructor(x) {
+    this.$value = x
+  }
+
+  map(fn) {
+    return this.isNothing() ? this : Maybe.of(fn(this.$value))
+  }
+
+  inspect() {
+    return this.isNothing() ? 'Nothing' : `Just ${this.$value}`
+  }
+}
 
 // compose :: [fn] -> ((fn, fn) -> [fn] -> fn) -> fn
 const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)))
@@ -36,9 +58,10 @@ const spaceJoin = join(' ')
 
 const defaultJoin = join('')
 
+// purify's the object
 const purify = x => JSON.parse(JSON.stringify(x))
 
-// push :: (a, [a/b]) -> [a/b]
+// push :: (a, b) -> b
 const push = (x, array) => array.push(x)
 
 // prop :: (String -> {a/b}) -> a/b
@@ -96,6 +119,7 @@ const readFilePromise = credentialPath => new Promise( (resolve, reject) => {
 const trim = str => str.trim()
 
 module.exports = {
+  Maybe,
   boolValTranslator,
   indexOf,
   remove,

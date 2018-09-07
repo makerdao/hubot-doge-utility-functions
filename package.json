@@ -1,6 +1,6 @@
 {
   "name": "hubot-doge-utility-functions",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Multi-purpose hubot utility functions needed as a dependency in the doge-bot (a robust hubot housing several programs)",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,11 @@
   },
   "homepage": "https://github.com/ith-harvey/hubot-doge-utility-functions#readme",
   "dependencies": {
-    "request": "^2.87.0",
+    "coffeescript": "^2.3.1",
+    "hubot": "^3.1.1",
+    "hubot-redis-brain": "^1.0.0",
+    "hubot-rocketchat": "^2.0.0",
+    "request": "^2.88.0",
     "request-promise": "^4.2.2"
   }
 }
