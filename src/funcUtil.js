@@ -118,6 +118,12 @@ const readFilePromise = credentialPath => new Promise( (resolve, reject) => {
 // trim :: String -> String
 const trim = str => str.trim()
 
+const filter = (fn) => (arr) => arr.filter(fn)
+
+const map = (fn) => (arr) => arr.map(fn)
+
+const endsWith = (chkString) => (str) => str.endsWith(chkString)
+
 module.exports = {
   Maybe,
   boolValTranslator,
@@ -143,5 +149,9 @@ module.exports = {
   defaultJoin,
   getTodaysDateInUTC,
   trim,
-  join
+  join,
+  trim,
+  filter,
+  map,
+  endsWith
 }

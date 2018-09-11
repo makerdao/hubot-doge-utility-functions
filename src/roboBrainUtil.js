@@ -91,15 +91,18 @@ const addUserToGroup = (data, msg, groupId) => {
   return rp(options)
 }
 
-const sendUserMessage = (message, robot, roomID) => {
-  robot.send(roomID, message)
-}
+// R.Chat adapter functions
+const getRoomIdByName = async (roomName) => await robot.adapter.getRoomId(roomName)
+const sendRoomMessage = (msg) => async (roomId) => await robot.adapter.send({user: {roomID: false}, room: roomId}, msg )
+const sendDirectMessage = (msg) => async (userName) => await robot.adapter.sendDirect({user: { name: userName}}, msg )
 
 module.exports = {
   newUserCheckAndCreate,
   getAuthToken,
   addUserToGroup,
   getPrivateRooms,
-  sendUserMessage,
-  downloadInvoice
+  downloadInvoice,
+  getRoomIdByName,
+  sendRoomMessage,
+  sendDirectMessage
 }
