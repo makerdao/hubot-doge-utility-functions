@@ -96,6 +96,19 @@ const getRoomIdByName = async (robot, roomName) => await robot.adapter.getRoomId
 const sendRoomMessage = (robot, msg) => async (roomId) => await robot.adapter.send({user: {roomID: false}, room: roomId}, msg )
 const sendDirectMessage = (robot, msg) => async (userName) => await robot.adapter.sendDirect({user: { name: userName}}, msg )
 
+/* customMessage takes message obj {msg: "Security Alert", rid: rid,
+       attachments: [
+         { title: "Maker employees who are not 2FA compliant:",
+           text: "@iant \n @george "
+          },
+         { title: "Maker employees who are not email compliant:",
+           text: "@iant \n @george "
+          }
+        ]
+      }
+*/
+const customMessage = async (robot, msgObj) => await robot.adapter.customMessage(msgObj)
+
 module.exports = {
   newUserCheckAndCreate,
   getAuthToken,
@@ -104,5 +117,6 @@ module.exports = {
   downloadInvoice,
   getRoomIdByName,
   sendRoomMessage,
-  sendDirectMessage
+  sendDirectMessage,
+  customMessage
 }
