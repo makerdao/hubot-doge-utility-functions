@@ -91,6 +91,26 @@ const addUserToGroup = (data, msg, groupId) => {
   return rp(options)
 }
 
+
+
+const removeUserFromGroup = (data, msg, groupId) => {
+  const {authToken: token, userId: botId } = data
+  const options = {
+    method: 'POST',
+    url: `${process.env.ROCKETCHAT_URL}/api/v1/groups.kick`,
+    headers:{
+      'X-Auth-Token': token,
+      'X-User-Id': botId,
+    },
+    body: {
+      roomId: groupId,
+      userId: msg.message.user.id
+    },
+    json: true
+  }
+  return rp(options)
+}
+
 // R.Chat adapter functions
 const getRoomIdByName = async (robot, roomName) => await robot.adapter.getRoomId(roomName)
 const sendRoomMessage = (robot, msg) => async (roomId) => await robot.adapter.send({user: {roomID: false}, room: roomId}, msg )
@@ -113,6 +133,7 @@ module.exports = {
   newUserCheckAndCreate,
   getAuthToken,
   addUserToGroup,
+  removeUserFromGroup,
   getPrivateRooms,
   downloadInvoice,
   getRoomIdByName,
