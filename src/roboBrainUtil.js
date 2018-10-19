@@ -92,7 +92,7 @@ const addUserToGroup = (data, msg, groupId) => {
 }
 
 
-const getUserInfo = (data, userName, groupId) => {
+const getUserInfo = (data, userName) => {
   const {authToken: token, userId: botId } = data
   const options = {
     method: 'POST',
