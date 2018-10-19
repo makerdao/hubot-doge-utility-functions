@@ -95,7 +95,7 @@ const addUserToGroup = (data, msg, groupId) => {
 const getUserInfo = (data, userName) => {
   const {authToken: token, userId: botId } = data
   const options = {
-    method: 'POST',
+    method: 'GET',
     url: `${process.env.ROCKETCHAT_URL}/api/v1/users.info?username=${userName}`,
     headers:{
       'X-Auth-Token': token,
