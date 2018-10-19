@@ -92,8 +92,21 @@ const addUserToGroup = (data, msg, groupId) => {
 }
 
 
+const getUserInfo = (data, userName, groupId) => {
+  const {authToken: token, userId: botId } = data
+  const options = {
+    method: 'POST',
+    url: `${process.env.ROCKETCHAT_URL}/api/v1/users.info?username=${userName}`,
+    headers:{
+      'X-Auth-Token': token,
+      'X-User-Id': botId,
+    },
+    json: true
+  }
+  return rp(options)
+}
 
-const removeUserFromGroup = (data, msg, groupId) => {
+const removeUserFromGroup = (data, userId, groupId) => {
   const {authToken: token, userId: botId } = data
   const options = {
     method: 'POST',
@@ -104,7 +117,7 @@ const removeUserFromGroup = (data, msg, groupId) => {
     },
     body: {
       roomId: groupId,
-      userId: msg.message.user.id
+      userId: userId
     },
     json: true
   }
@@ -139,5 +152,6 @@ module.exports = {
   getRoomIdByName,
   sendRoomMessage,
   sendDirectMessage,
-  customMessage
+  customMessage,
+  getUserInfo
 }
