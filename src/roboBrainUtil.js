@@ -96,7 +96,7 @@ const getUserInfo = (data, userName) => {
   const {authToken: token, userId: botId } = data
   const options = {
     method: 'GET',
-    url: `${process.env.ROCKETCHAT_URL}/api/v1/users.info?username=${userName}`,
+    url: `${process.env.ROCKETCHAT_URL}/api/v1/users.info?userId=${userName}`,
     headers:{
       'X-Auth-Token': token,
       'X-User-Id': botId,
