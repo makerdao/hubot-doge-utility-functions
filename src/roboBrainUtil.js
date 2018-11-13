@@ -91,6 +91,23 @@ const addUserToGroup = (data, msg, groupId) => {
   return rp(options)
 }
 
+const makeBotModeratorInGroup = (data, groupId) => {
+  const {authToken: token, userId: botId } = data
+  const options = {
+    method: 'POST',
+    url: `${process.env.ROCKETCHAT_URL}/api/v1/channels.addModerator`,
+    headers:{
+      'X-Auth-Token': token,
+      'X-User-Id': botId,
+    },
+    body: {
+      roomId: groupId,
+      userId: botId
+    },
+    json: true
+  }
+  return rp(options)
+}
 
 const getUserInfo = (data, userName) => {
   const {authToken: token, userId: botId } = data
@@ -146,6 +163,7 @@ module.exports = {
   newUserCheckAndCreate,
   getAuthToken,
   addUserToGroup,
+  makeBotModeratorInGroup,
   removeUserFromGroup,
   getPrivateRooms,
   downloadInvoice,
