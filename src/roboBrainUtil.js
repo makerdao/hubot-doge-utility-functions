@@ -95,7 +95,7 @@ const makeBotModeratorInGroup = (data, groupId) => {
   const {authToken: token, userId: botId } = data
   const options = {
     method: 'POST',
-    url: `${process.env.ROCKETCHAT_URL}/api/v1/channels.addModerator`,
+    url: `${process.env.ROCKETCHAT_URL}/api/v1/groups.addModerator`,
     headers:{
       'X-Auth-Token': token,
       'X-User-Id': botId,
